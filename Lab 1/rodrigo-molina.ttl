@@ -18,7 +18,7 @@ esq:estudiaEn a rdfs:Property ;
     foaf:mbox <mailto:rodmolina@ug.uchile.cl> ;
     foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/A_bougainvillea_plant_%28Bougainvillea_speciosa%29%3B_flowering_st_Wellcome_V0044424.jpg> ;
     foaf:homepage <https://github.com/RodrigoMolinaAvila> ;
-    foaf:knows <http://example.com/frpezzolla.ttl>,
+    foaf:knows <http://example.com/frpezzolla.ttl#me>,
      <http://renato-pino.cl/renato-pino.ttl#me>, 
      <http://example.com/hecmar-taucare.ttl#me>, 
      <http://example.com/carolina-nunez.ttl#me>,
