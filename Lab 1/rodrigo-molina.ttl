@@ -1,0 +1,29 @@
+@base <http://example.org/rodrigo-molina.ttl> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix esq: <http://example.org/mi-escuela#> .
+
+esq:Estudiante rdfs:subClassOf foaf:Person .
+
+esq:estudiaEn a rdfs:Property ;
+    rdfs:domain foaf:Person ;
+    rdfs:range <https://www.wikidata.org/entity/Q232141> .
+
+<#rodrigom> a foaf:Person ;
+    foaf:name "Rodrigo Alexis Molina Avila" ;
+    foaf:firstName "Rodrigo" ;
+    foaf:lastName "Molina" ;
+    foaf:mbox <mailto:rodmolina@ug.uchile.cl> ;
+    foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/A_bougainvillea_plant_%28Bougainvillea_speciosa%29%3B_flowering_st_Wellcome_V0044424.jpg> ;
+    foaf:homepage <https://github.com/RodrigoMolinaAvila> ;
+    foaf:knows <http://example.com/frpezzolla.ttl>,
+     <http://renato-pino.cl/renato-pino.ttl#me>, 
+     <http://example.com/hecmar-taucare.ttl#me>, 
+     <http://example.com/carolina-nunez.ttl#me>,
+     <http://example.com/MarceloPalma.ttl#yo> ;
+    esq:estudiaEn <https://www.wikidata.org/entity/Q232141> .
+
+
+
