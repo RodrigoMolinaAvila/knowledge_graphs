@@ -22,6 +22,7 @@ esq:estudiaEn a rdfs:Property ;
      <http://renato-pino.cl/renato-pino.ttl#me>, 
      <http://example.com/hecmar-taucare.ttl#me>, 
      <http://example.com/carolina-nunez.ttl#me>,
+     <http://users.dcc.uchile.cl/~jonetto/foaf.ttl#me>,
      <http://example.com/MarceloPalma.ttl#yo> ;
     esq:estudiaEn <https://www.wikidata.org/entity/Q232141> .
 
