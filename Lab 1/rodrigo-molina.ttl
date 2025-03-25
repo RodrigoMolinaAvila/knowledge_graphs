@@ -12,9 +12,15 @@ esq:estudiaEn a rdfs:Property ;
     rdfs:range <https://www.wikidata.org/entity/Q232141> .
 
 <#rodrigom> a foaf:Person ;
+    foaf:birthday "1993-12-27" ;
+    foaf:age "31" ;
+    foaf:myersBriggs "ENFP" ;
     foaf:name "Rodrigo Alexis Molina Avila" ;
     foaf:firstName "Rodrigo" ;
     foaf:lastName "Molina" ;
+    foaf:schoolHomepage <https://www.uchile.cl/>,
+     <https://www.unab.cl/> ;
+    foaf:workplaceHomepage <https://www.coes.cl/> ;
     foaf:mbox <mailto:rodmolina@ug.uchile.cl> ;
     foaf:img <https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/A_bougainvillea_plant_%28Bougainvillea_speciosa%29%3B_flowering_st_Wellcome_V0044424.jpg> ;
     foaf:homepage <https://github.com/RodrigoMolinaAvila> ;
