@@ -8,12 +8,13 @@
 esq:Estudiante rdfs:subClassOf foaf:Person .
 
 esq:estudiaEn a rdfs:Property ;
-    rdfs:domain foaf:Person ;
+    rdfs:domain esq:Estudiante ;
+    rdfs:label "Estudia en"@es ;
+    rdfs:comment "Relación que vincula a un estudiante con la institución universitaria en la que estudia" ;
     rdfs:range <https://www.wikidata.org/entity/Q232141> .
 
-<#rodrigom> a foaf:Person ;
-    foaf:birthday "1993-12-27" ;
-    foaf:age "31" ;
+<#me> a foaf:Person ;
+    foaf:birthday "1993-12-27"^^xsd:date .
     foaf:myersBriggs "ENFP" ;
     foaf:name "Rodrigo Alexis Molina Avila" ;
     foaf:firstName "Rodrigo" ;
