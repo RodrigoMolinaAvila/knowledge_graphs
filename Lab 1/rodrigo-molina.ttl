@@ -14,8 +14,7 @@ esq:estudiaEn a rdfs:Property ;
     rdfs:range <https://www.wikidata.org/entity/Q232141> .
 
 <#me> a foaf:Person ;
-    foaf:birthday "1993-12-27"^^xsd:date .
-    foaf:myersBriggs "ENFP" ;
+    foaf:birthday "1993-12-27"^^xsd:date ;
     foaf:name "Rodrigo Alexis Molina Avila" ;
     foaf:firstName "Rodrigo" ;
     foaf:lastName "Molina" ;
