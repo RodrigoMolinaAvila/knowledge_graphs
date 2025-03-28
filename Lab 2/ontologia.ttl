@@ -1,0 +1,89 @@
+#1
+
+:hasSpouse a owl:SymmetricProperty .
+
+:engagedTo a owl:SymmetricProperty .
+
+#2
+
+:hasParent a owl:TransitiveProperty .
+
+:hasChild owl:inverseOf :hasParent .
+
+#3
+
+:ancestorOf a owl:TransitiveProperty ;
+    owl:propertyChainAxiom ( 
+        :hasChild :ancestorOf ) .
+
+:hasChild rdfs:subPropertyOf :ancestorOf .
+
+#4
+
+:hasCousin a owl:SymmetricProperty ;
+    owl:propertyChainAxiom ( 
+        :hasParent :hasSibling :hasChild ) .
+
+:hasSibling a owl:SymmetricProperty ;
+    owl:propertyChainAxiom ( 
+        :hasParent :hasChild ) .
+
+#5
+
+:Targaryen a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf ( 
+            :Person 
+            [ a owl:Restriction ;
+              owl:onProperty :memberOf ;
+              owl:hasValue :HouseTargaryen
+            ]
+        )
+    ] .
+
+#6
+
+:Valyrian a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:unionOf ( 
+            [ a owl:Restriction ;
+              owl:onProperty :memberOf ;
+              owl:hasValue :HouseTargaryen
+            ]
+            [ a owl:Restriction ;
+              owl:onProperty :memberOf ;
+              owl:hasValue :HouseVelaryon
+            ]
+            [ a owl:Restriction ;
+              owl:onProperty :memberOf ;
+              owl:hasValue :HouseCeltigar
+            ]
+        )
+    ] .
+
+#7
+
+:Andal a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:complementOf :Valyrian
+    ] .
+
+:AlicentHightower a :Andal .
+
+#8
+
+:OnlyMarriesValyrians a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Person
+            [ a owl:Restriction ;
+              owl:onProperty :hasSpouse ;
+              owl:allValuesFrom :Valyrian
+            ]
+        )
+    ] .
+
