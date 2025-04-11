@@ -116,6 +116,7 @@ ex:LaureateShape a sh:NodeShape ;
           sh:datatype xsd:string ;
           sh:pattern "^[^\\d_]{2,}$" ;
         ] .
+#En este punto hay un nombre "Satoshi &#332;mura" que genera conflicto en la ejecución de las propiedades, tiene que ver con la redacción de un caracter en su nombre "Ō"
 
 #9
 
