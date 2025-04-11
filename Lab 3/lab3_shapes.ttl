@@ -1,0 +1,141 @@
+#1
+
+ex:PersonShape a sh:NodeShape ;
+    sh:targetClass foaf:Person ;
+    sh:property [
+       sh:path foaf:birthday ;
+       sh:datatype xsd:date ;
+    ] .
+
+#2
+
+ex:PersonShape a sh:NodeShape ;
+    sh:targetClass foaf:Person ;
+    sh:property [
+       sh:path foaf:givenName ;
+       sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+       sh:path foaf:name ;
+       sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+       sh:path foaf:familyName ;
+       sh:datatype xsd:string ;
+    ] .
+
+#3
+
+ex:PersonShape a sh:NodeShape ;
+    sh:targetClass foaf:Person ;
+    sh:property [
+        sh:path [sh:alternativePath (foaf:givenName foaf:name foaf:familyName)] ;
+        sh:datatype xsd:string ;
+    ] .
+
+#4
+
+ex:LaureateShape a sh:NodeShape ;
+    sh:targetClass nobel:Laureate ;
+    sh:property [
+        sh:path dbo:affiliation ;
+        sh:class dbo:University ;
+        sh:minCount 1 ;
+    ] .
+
+
+#5
+
+ex:LaureateShape a sh:NodeShape ;
+    sh:targetClass nobel:Laureate ;
+    sh:property [
+        sh:path dbo:affiliation ;
+        sh:qualifiedValueShape [
+            sh:class dbo:University ;
+        ] ;
+        sh:qualifiedMinCount 1 ;
+    ] .
+
+#6
+
+ex:LaureateShape a sh:NodeShape ;
+    sh:targetClass nobel:Laureate ;
+    sh:property [
+        sh:path dbp:dateOfBirth ;
+        sh:equals foaf:birthday ;
+        sh:datatype xsd:date ;
+    ] .
+
+#Si no tiene una de las propiedades definidas aparece este error: "Must have same values as <http://xmlns.com/foaf/0.1/birthday>", así que es necesario que existan ambas declaradas para que sea válida.
+
+
+
+#7
+
+ex:LaureateShape a sh:NodeShape ;
+    sh:targetClass nobel:Laureate ;
+  sh:or (
+    [ sh:not [
+        sh:property [
+          sh:path dbp:dateOfBirth ;
+          sh:minCount 1
+        ]
+      ]
+    ]
+    [ sh:not [
+        sh:property [
+          sh:path foaf:birthday ;
+          sh:minCount 1
+        ]
+      ]
+    ]
+    [ sh:property [
+        sh:path dbp:dateOfBirth ;
+        sh:equals foaf:birthday ;
+        sh:datatype xsd:date;
+      ]
+    ]
+  ) .
+
+#8
+
+ex:LaureateShape a sh:NodeShape ;
+    sh:targetClass nobel:Laureate ;
+        sh:property [
+          sh:path foaf:name ;
+          sh:datatype xsd:string ;
+          sh:pattern "^[^\\d_]{2,}$" ;
+        ] ;
+        sh:property [
+          sh:path foaf:givenName ;
+          sh:datatype xsd:string ;
+          sh:pattern "^[^\\d_]{2,}$" ;
+        ] ;
+        sh:property [
+          sh:path foaf:familyName ;
+          sh:datatype xsd:string ;
+          sh:pattern "^[^\\d_]{2,}$" ;
+        ] .
+
+#9
+
+ex:LaureateAwardShape a sh:NodeShape ;
+    sh:targetClass nobel:LaureateAward ;
+    sh:property [
+        sh:path nobel:share ;
+        sh:in ( "1" "2" "3" "4" ) ;
+    ] .
+    
+#En esta por un momento pensé utilizar como un mayor/menor o igual pero los valores estan escritos entre comillas asi que son strings.
+
+#10
+
+ex:NobelPrizeShape a sh:NodeShape ;
+    sh:targetClass nobel:NobelPrize ;
+      sh:property [
+    sh:path nobel:motivation ;
+    sh:datatype xsd:string ;
+    sh:minLength 10 ;
+    sh:maxCount 1 ;
+    sh:uniqueLang true ;
+    ] .
