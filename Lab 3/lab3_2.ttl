@@ -1,59 +1,3 @@
-@prefix ex: <http://example.org#> .
-@prefix dash: <http://datashapes.org/dash#> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
-@prefix laureate: <http://data.nobelprize.org/resource/laureate/> .
-@prefix nobel: <http://data.nobelprize.org/terms/> .
-
-#1
-
-ex:PersonShape a sh:NodeShape ;
-    sh:targetClass foaf:Person ;
-    sh:property [
-       sh:path foaf:birthday ;
-       sh:datatype xsd:date ;
-    ] .
-
-#2
-
-ex:PersonShape a sh:NodeShape ;
-    sh:targetClass foaf:Person ;
-    sh:property [
-       sh:path foaf:givenName ;
-       sh:datatype xsd:string ;
-    ] ;
-    sh:property [
-       sh:path foaf:name ;
-       sh:datatype xsd:string ;
-    ] ;
-    sh:property [
-       sh:path foaf:familyName ;
-       sh:datatype xsd:string ;
-    ] .
-
-#3
-
-ex:PersonShape a sh:NodeShape ;
-    sh:targetClass foaf:Person ;
-    sh:property [
-        sh:path [sh:alternativePath (foaf:givenName foaf:name foaf:familyName)] ;
-        sh:datatype xsd:string ;
-    ] .
-
-
-laureate:936
-    a                foaf:Person ;
-    foaf:birthday    "1980-05-15"^^xsd:date ;
-    foaf:familyName  "Doe" ;
-    foaf:givenName   "John" ;
-    foaf:name        "John Doe" ;
-    foaf:gender      "male" .
-
-
-
-
-
 @prefix country: <http://data.nobelprize.org/resource/country/> .
 @prefix city:  <http://data.nobelprize.org/resource/city/> .
 @prefix university: <http://data.nobelprize.org/resource/university/> .
@@ -64,6 +8,10 @@ laureate:936
 @prefix dbo:   <http://dbpedia.org/ontology/> .
 @prefix dbp:   <http://dbpedia.org/property/> .
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://example.org#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 laureate:935  a              foaf:Person , nobel:Laureate ;
         rdfs:label           "Oliver Hart" ;
@@ -83,16 +31,17 @@ country:United_Kingdom
         rdfs:label  "United Kingdom" .
 city:London  a      dbo:City ;
         rdfs:label  "London" .
+        
 
 #4
 
 ex:LaureateShape a sh:NodeShape ;
     sh:targetClass nobel:Laureate ;
-        sh:property [
-            sh:path dbo:affiliation ;
-            sh:class dbo:University ;
-            sh:minCount 1 ;
-        ] .
+    sh:property [
+        sh:path dbo:affiliation ;
+        sh:class dbo:University ;
+        sh:minCount 1 ;
+    ] .
 
 
 #5
@@ -112,22 +61,39 @@ ex:LaureateShape a sh:NodeShape ;
 ex:LaureateShape a sh:NodeShape ;
     sh:targetClass nobel:Laureate ;
     sh:property [
-        sh:path dbp:dateOfDeath ;
+        sh:path dbp:dateOfBirth ;
+        sh:equals foaf:birthday ;
         sh:datatype xsd:date ;
-        sh:lessThan dbp:dateOfBirth ;
     ] .
 
-# No, no se valida bien si alguna de las dos propiedades no está definida, ya que `sh:lessThan` requiere que ambas propiedades estén presentes para realizar la comparación.
+#Si no tiene una de las propiedades definidas aparece este error: "Must have same values as <http://xmlns.com/foaf/0.1/birthday>", así que es necesario que existan ambas declaradas para que sea válida.
+
+
 
 #7
 
 ex:LaureateShape a sh:NodeShape ;
     sh:targetClass nobel:Laureate ;
-    sh:property [
-        sh:path dbp:dateOfDeath ;
-        sh:or (
-            [ sh:datatype xsd:date ; sh:lessThan dbp:dateOfBirth ]
-        ) ;
-    ] .
+  sh:or (
+    [ sh:not [
+        sh:property [
+          sh:path dbp:dateOfBirth ;
+          sh:minCount 1
+        ]
+      ]
+    ]
+    [ sh:not [
+        sh:property [
+          sh:path foaf:birthday ;
+          sh:minCount 1
+        ]
+      ]
+    ]
+    [ sh:property [
+        sh:path dbp:dateOfBirth ;
+        sh:equals foaf:birthday ;
+        sh:datatype xsd:date;
+      ]
+    ]
+  ) .
 
-# 
