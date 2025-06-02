@@ -1,0 +1,129 @@
+#1
+
+SELECT ?uni ?uniLabel
+WHERE {
+    ?uni rdfs:label "Universidad de Chile"@es.
+    
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en".  }
+}
+
+La universidad que corresponde es Q232141. A diferencia de la estación de metro y una página de desambiguación.
+
+
+
+#2
+
+SELECT ?class ?classLabel
+WHERE {
+  wd:Q232141 wdt:P31 ?class .
+  
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+#3
+
+SELECT ?uni ?uniLabel
+WHERE {
+  ?uni wdt:P31 wd:Q3918.
+  ?uni wdt:P17 ?pais.
+  ?pais wdt:P30 wd:Q18.
+  ?uni wdt:P571 ?fechaFundacion.
+  wd:Q232141 wdt:P571 ?fechaUCH.
+  FILTER (?fechaFundacion < ?fechaUCH).
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+#4
+
+SELECT DISTINCT ?p ?pLabel ?otherU ?otherULabel
+WHERE {
+  ?p wdt:P69 wd:Q232141.
+  ?p wdt:P69 ?otherU.
+  FILTER (?otherU != wd:Q232141).
+  ?otherU wdt:P31 wd:Q3918.
+  ?otherU wdt:P17 wd:Q298.
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+#5
+
+SELECT ?ocupacion ?ocupacionLabel (COUNT(?p) AS ?cantidad)
+WHERE {
+  ?p wdt:P69 wd:Q232141.
+  ?p wdt:P106 ?ocupacion.
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+GROUP BY ?ocupacion ?ocupacionLabel
+ORDER BY DESC(?cantidad)
+
+#6
+
+SELECT ?p ?pLabel ?rol
+WHERE {
+  {
+    ?p wdt:P69 wd:Q232141.
+    BIND("estudiante" AS ?rol)
+  }
+  UNION
+  {
+    ?p wdt:P108 wd:Q232141.
+    BIND("trabajador" AS ?rol)
+  }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+#7
+
+SELECT ?pLabel ?paisNacimientoLabel ?fechaNacimiento
+WHERE {
+  {
+    ?p wdt:P69 wd:Q232141.
+  }
+  UNION
+  {
+    ?p wdt:P108 wd:Q232141.
+  }
+  OPTIONAL { 
+    ?p wdt:P569 ?fechaNacimiento. 
+  }
+  OPTIONAL {
+    ?p wdt:P19 ?lugarNacimiento.
+    ?lugarNacimiento wdt:P17 ?paisNacimiento.
+  }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en".  }
+}
+
+#8
+
+SELECT ?pLabel ?edad
+WHERE {
+  {
+    SELECT (AVG(?edad) AS ?edadPromedio)
+    WHERE {
+      ?p wdt:P69 wd:Q232141.
+      ?p wdt:P569 ?fechaNacimiento.
+      FILTER NOT EXISTS { ?p wdt:P570 ?fechaMuerte. } 
+      BIND(YEAR(NOW()) - YEAR(?fechaNacimiento) AS ?edad)
+    }
+  }
+  
+  ?p wdt:P69 wd:Q232141.
+  ?p wdt:P569 ?fechaNacimiento.
+  FILTER NOT EXISTS { ?p wdt:P570 ?fechaMuerte. }
+  BIND(YEAR(NOW()) - YEAR(?fechaNacimiento) AS ?edad)
+  
+  FILTER (?edad > ?edadPromedio)
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en". }
+}
+
+ORDER BY DESC(?edad)
+
+PD: lo intenté en la 8, pero no me convencen los resultados, cuando le agregue el ORDER BY DESC(?edad) aparecían edades de 182 años, acepto el error pero con la retroalimentación necesaria. Gracias!
+
