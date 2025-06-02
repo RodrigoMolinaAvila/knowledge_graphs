@@ -1,0 +1,228 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix got: <http://example.org/got#> .
+@prefix v: <http://example.org/vocab#> .
+
+got:AerysTargaryen a v:Character,
+        v:King ;
+    v:ancestralHome got:Dragonstone ;
+    v:memberOf got:HouseTargaryen ;
+    foaf:name "Aerys Targaryen" .
+
+got:AryaStark a v:Character ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Arya Stark" .
+
+got:BalonGreyjoy a v:Character ;
+    v:ancestralHome got:Pyke ;
+    v:memberOf got:HouseGreyjoy ;
+    foaf:name "Balon Greyjoy" .
+
+got:BenjenStark a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Benjen Stark" .
+
+got:BranStark a v:Character ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Bran Stark" .
+
+got:DaenerysTargaryen a v:Character,
+        v:Queen ;
+    v:ancestralHome got:Dragonstone ;
+    v:memberOf got:HouseTargaryen ;
+    foaf:name "Daenerys Targaryen" .
+
+got:DoranMartell a v:Character ;
+    v:ancestralHome got:Sunspear ;
+    v:memberOf got:HouseMartell ;
+    foaf:name "Doran Martell" .
+
+got:EllariaSand a v:Character ;
+    v:ancestralHome got:Sunspear ;
+    v:memberOf got:HouseMartell ;
+    foaf:name "Ellaria Sand" .
+
+got:JaimeLannister a v:Character,
+        v:Knight ;
+    v:ancestralHome got:CasterlyRock ;
+    v:memberOf got:HouseLannister ;
+    foaf:name "Jaime Lannister" .
+
+got:JoannaLannister a v:Character ;
+    v:ancestralHome got:CasterlyRock ;
+    v:memberOf got:HouseLannister ;
+    foaf:name "Joanna Lannister" .
+
+got:JonSnow a v:Character,
+        v:King,
+        v:Knight ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Jon Snow" .
+
+got:LorasTyrell a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Highgarden ;
+    v:memberOf got:HouseTyrell ;
+    foaf:name "Loras Tyrell" .
+
+got:MargaeryTyrell a v:Character ;
+    v:ancestralHome got:Highgarden ;
+    v:memberOf got:HouseTyrell ;
+    foaf:name "Margaery Tyrell" .
+
+got:OberynMartell a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Sunspear ;
+    v:memberOf got:HouseMartell ;
+    foaf:name "Oberyn Martell" .
+
+got:OlennaTyrell a v:Character ;
+    v:ancestralHome got:Highgarden ;
+    v:memberOf got:HouseTyrell ;
+    foaf:name "Olenna Tyrell" .
+
+got:RenlyBaratheon a v:Character ;
+    v:ancestralHome got:StormsEnd ;
+    v:memberOf got:HouseBaratheon ;
+    foaf:name "Renly Baratheon" .
+
+got:RhaegarTargaryen a v:Character ;
+    v:ancestralHome got:Dragonstone ;
+    v:memberOf got:HouseTargaryen ;
+    foaf:name "Rhaegar Targaryen" .
+
+got:RickonStark a v:Character ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Rickon Stark" .
+
+got:RobbStark a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Robb Stark" .
+
+got:RobertBaratheon a v:Character,
+        v:King ;
+    v:ancestralHome got:StormsEnd ;
+    v:memberOf got:HouseBaratheon ;
+    v:spouse got:CerseiLannister ;
+    foaf:name "Robert Baratheon" .
+
+got:StannisBaratheon a v:Character ;
+    v:ancestralHome got:Dragonstone ;
+    v:memberOf got:HouseBaratheon ;
+    foaf:name "Stannis Baratheon" .
+
+got:TheonGreyjoy a v:Character ;
+    v:ancestralHome got:Pyke ;
+    v:memberOf got:HouseGreyjoy ;
+    foaf:name "Theon Greyjoy" .
+
+got:TyrionLannister a v:Character ;
+    v:ancestralHome got:CasterlyRock ;
+    v:memberOf got:HouseLannister ;
+    foaf:name "Tyrion Lannister" .
+
+got:TywinLannister a v:Character ;
+    v:ancestralHome got:CasterlyRock ;
+    v:memberOf got:HouseLannister ;
+    foaf:name "Tywin Lannister" .
+
+got:ViserysTargaryen a v:Character ;
+    v:ancestralHome got:Dragonstone ;
+    v:memberOf got:HouseTargaryen ;
+    foaf:name "Viserys Targaryen" .
+
+got:YaraGreyjoy a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Pyke ;
+    v:memberOf got:HouseGreyjoy ;
+    foaf:name "Yara Greyjoy" .
+
+got:CatelynStark a v:Character ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    v:spouse got:EddardStark ;
+    v:parentOf got:SansaStark, got:RobbStark, got:BranStark, got:RickonStark, got:AryaStark;
+    foaf:name "Catelyn Stark" .
+
+got:CerseiLannister a v:Character,
+        v:Queen ;
+    v:ancestralHome got:CasterlyRock ;
+    v:memberOf got:HouseLannister ;
+    foaf:name "Cersei Lannister" .
+
+got:EddardStark a v:Character,
+        v:Knight ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    v:spouse got:CatelynStark ;
+    v:parentOf got:SansaStark, got:RobbStark, got:BranStark, got:RickonStark, got:AryaStark, got:JonSnow;
+    foaf:name "Eddard Stark" .
+
+got:SansaStark a v:Character ;
+    v:ancestralHome got:Winterfell ;
+    v:memberOf got:HouseStark ;
+    foaf:name "Sansa Stark" .
+
+got:HouseBaratheon a v:House ;
+    v:seat got:StormsEnd ;
+    foaf:name "House Baratheon" .
+
+got:HouseGreyjoy a v:House ;
+    v:seat got:Pyke ;
+    foaf:name "House Greyjoy" .
+
+got:HouseMartell a v:House ;
+    v:seat got:Sunspear ;
+    foaf:name "House Martell" .
+
+got:HouseTyrell a v:House ;
+    v:seat got:Highgarden ;
+    foaf:name "House Tyrell" .
+
+got:StormsEnd a v:Castle ;
+    v:location "The Stormlands" ;
+    foaf:name "StormsEnd" .
+
+got:Highgarden a v:Castle ;
+    v:location "The Reach" ;
+    foaf:name "Highgarden" .
+
+got:HouseTargaryen a v:House ;
+    v:seat got:Dragonstone ;
+    foaf:name "House Targaryen" .
+
+got:Pyke a v:Castle ;
+    v:location "Iron Islands" ;
+    foaf:name "Pyke" .
+
+got:Sunspear a v:Castle ;
+    v:location "Dorne" ;
+    foaf:name "Sunspear" .
+
+got:HouseLannister a v:House ;
+    v:seat got:CasterlyRock ;
+    foaf:name "House Lannister" .
+
+got:CasterlyRock a v:Castle ;
+    v:location "The Westerlands" ;
+    foaf:name "CasterlyRock" .
+
+got:Dragonstone a v:Castle ;
+    v:location "Blackwater Bay" ;
+    foaf:name "Dragonstone" .
+
+got:HouseStark a v:House ;
+    v:seat got:Winterfell ;
+    foaf:name "House Stark" .
+
+got:Winterfell a v:Castle ;
+    v:location "The North" ;
+    foaf:name "Winterfell" .
+

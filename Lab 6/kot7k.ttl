@@ -1,0 +1,129 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix kot7k: <http://example.org/kot7k#> .
+@prefix got: <http://example.org/got#> .
+@prefix v: <http://example.org/vocab#> .
+
+kot7k:Bittersteel a v:Character ;
+    v:ancestralHome kot7k:Blackmont ;
+    v:memberOf kot7k:HouseBlackfyre ;
+    foaf:name "Bittersteel" .
+
+kot7k:DaemonBlackfyre a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Blackmont ;
+    v:memberOf kot7k:HouseBlackfyre ;
+    foaf:name "Daemon Blackfyre" .
+
+kot7k:GormonPeake a v:Character ;
+    v:ancestralHome kot7k:Starpike ;
+    v:memberOf kot7k:HousePeake ;
+    foaf:name "Gormon Peake" .
+
+kot7k:SerAbelarHightower a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Ser Abelar Hightower" .
+
+kot7k:SerAddamVelaryon a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Ser Addam Velaryon" .
+
+kot7k:SerHumfreyHardyng a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Ser Humfrey Hardyng" .
+
+kot7k:SerLyonelBaratheon a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Ser Lyonel Baratheon" .
+
+kot7k:AegonVTargaryen a v:Character,
+        v:King ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:mentorOf kot7k:SerDuncantheTall ;
+    v:spouse kot7k:BethaBlackwood ;
+    foaf:name "Aegon V Targaryen" .
+
+kot7k:BethaBlackwood a v:Character ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:parentOf kot7k:DuncanTargaryen ;
+    v:spouse kot7k:AegonVTargaryen ;
+    foaf:name "Betha Blackwood" .
+
+kot7k:DuncanTargaryen a v:Character ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Duncan Targaryen" .
+
+kot7k:HousePeake a v:House ;
+    v:seat kot7k:Starpike ;
+    foaf:name "House Peake" .
+
+kot7k:JaehaerysIITargaryen a v:Character,
+        v:King ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:spouse kot7k:ShaeraTargaryen ;
+    foaf:name "Jaehaerys II Targaryen" .
+
+kot7k:RhaegarTargaryen a v:Character ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Rhaegar Targaryen" .
+
+kot7k:RhaellaTargaryen a v:Character ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:parentOf kot7k:RhaegarTargaryen ;
+    v:spouse kot7k:AerysIITargaryen ;
+    foaf:name "Rhaella Targaryen" .
+
+kot7k:SerDuncantheTall a v:Character,
+        v:Knight ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    foaf:name "Ser Duncan the Tall" .
+
+kot7k:ShaeraTargaryen a v:Character ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:parentOf kot7k:AerysIITargaryen ;
+    v:spouse kot7k:JaehaerysIITargaryen ;
+    foaf:name "Shaera Targaryen" .
+
+kot7k:AerysIITargaryen a v:Character,
+        v:King ;
+    v:ancestralHome kot7k:Dragonstone ;
+    v:memberOf kot7k:HouseTargaryen ;
+    v:spouse kot7k:RhaellaTargaryen ;
+    v:parentOf kot7k:RhaegarTargaryen, got:DaenerysTargaryen;
+    foaf:name "Aerys II Targaryen" .
+
+kot7k:HouseBlackfyre a v:House ;
+    v:seat kot7k:Blackmont ;
+    foaf:name "House Blackfyre" .
+
+kot7k:Starpike a v:Castle ;
+    v:location "The Reach" ;
+    foaf:name "Starpike" .
+
+kot7k:Blackmont a v:Castle ;
+    v:location "Crownlands" ;
+    foaf:name "Blackmont" .
+
+kot7k:HouseTargaryen a v:House ;
+    v:seat kot7k:Dragonstone ;
+    foaf:name "House Targaryen" .
+
+kot7k:Dragonstone a v:Castle ;
+    v:location "Blackwater Bay" ;
+    foaf:name "Dragonstone" .
+

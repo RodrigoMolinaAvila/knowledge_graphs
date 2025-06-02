@@ -1,0 +1,96 @@
+@prefix dragons: <http://example.org/dragons#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix v: <http://example.org/vocab#> .
+
+dragons:GreyGhost a v:Dragon ;
+    foaf:name "Grey Ghost" .
+
+dragons:TheCannibal a v:Dragon ;
+    foaf:name "The Cannibal" .
+
+<http://example.org/got#DaenerysTargaryen> v:rides dragons:Drogon .
+
+<http://example.org/got#JonSnow> v:rides dragons:Rhaegal .
+
+<http://example.org/got#NightKing> v:rides dragons:Viserion .
+
+<http://example.org/hotd#AegonIITargaryen> v:rides dragons:Sunfyre .
+
+<http://example.org/hotd#AemondTargaryen> v:rides dragons:Vhagar .
+
+<http://example.org/hotd#LaenaVelaryon> v:rides dragons:Vhagar .
+
+<http://example.org/hotd#BaelaTargaryen> v:rides dragons:Moondancer .
+
+<http://example.org/hotd#DaemonTargaryen> v:rides dragons:Caraxes .
+
+<http://example.org/hotd#DaeronTargaryen> v:rides dragons:Tessarion .
+
+<http://example.org/hotd#JacaerysVelaryon> v:rides dragons:Vermax .
+
+<http://example.org/hotd#LaenorVelaryon> v:rides dragons:Seasmoke .
+
+<http://example.org/hotd#LucerysVelaryon> v:rides dragons:Arrax .
+
+<http://example.org/hotd#Nettles> v:rides dragons:Sheepstealer .
+
+<http://example.org/hotd#RhaenyraTargaryen> v:rides dragons:Syrax .
+
+<http://example.org/hotd#RhaenysTargaryen> v:rides dragons:Meleys .
+
+<http://example.org/kot7k#AegontheConqueror> v:rides dragons:Balerion .
+
+<http://example.org/hotd#ViserysITargaryen> v:rides dragons:Balerion .
+
+<http://example.org/kot7k#RhaenysTargaryen> v:rides dragons:Meraxes .
+
+<http://example.org/kot7k#VisenyaTargaryen> v:rides dragons:Vhagar .
+
+dragons:Arrax a v:Dragon ;
+    foaf:name "Arrax" .
+
+dragons:Balerion a v:Dragon ;
+    foaf:name "Balerion" .
+
+dragons:Caraxes a v:Dragon ;
+    foaf:name "Caraxes" .
+
+dragons:Drogon a v:Dragon ;
+    foaf:name "Drogon" .
+
+dragons:Meleys a v:Dragon ;
+    foaf:name "Meleys" .
+
+dragons:Meraxes a v:Dragon ;
+    foaf:name "Meraxes" .
+
+dragons:Moondancer a v:Dragon ;
+    foaf:name "Moondancer" .
+
+dragons:Rhaegal a v:Dragon ;
+    foaf:name "Rhaegal" .
+
+dragons:Seasmoke a v:Dragon ;
+    foaf:name "Seasmoke" .
+
+dragons:Sheepstealer a v:Dragon ;
+    foaf:name "Sheepstealer" .
+
+dragons:Sunfyre a v:Dragon ;
+    foaf:name "Sunfyre" .
+
+dragons:Syrax a v:Dragon ;
+    foaf:name "Syrax" .
+
+dragons:Tessarion a v:Dragon ;
+    foaf:name "Tessarion" .
+
+dragons:Vermax a v:Dragon ;
+    foaf:name "Vermax" .
+
+dragons:Viserion a v:Dragon ;
+    foaf:name "Viserion" .
+
+dragons:Vhagar a v:Dragon ;
+    foaf:name "Vhagar" .
+

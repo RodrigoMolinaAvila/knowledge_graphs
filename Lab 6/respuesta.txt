@@ -1,0 +1,181 @@
+P1:
+
+PREFIX v: <http://example.org/vocab#>
+
+SELECT DISTINCT ?castle
+WHERE {
+  ?castle a v:Castle .
+}
+
+
+Resultaron 13 distintos castillos.
+
+PREFIX v: <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?name
+WHERE {
+  ?castle a v:Castle ;
+          foaf:name ?name .
+}
+
+Resultaron 13 nombres, no distintos, "Dragonstone" se repite 3 veces.
+¿Por qué pasa esto? Porque Castle es una IRI única, y foaf:name es un literal nombre que puede repetirse.
+
+
+P2:
+
+PREFIX v: <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?dragonName
+WHERE {
+  ?dragon a v:Dragon ;
+          foaf:name ?dragonName .
+  
+  FILTER NOT EXISTS {
+    ?someone v:rides ?dragon .
+  }
+}
+
+P3:
+
+PREFIX v: <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?knightName
+WHERE {
+  ?knight a v:Knight ;
+          foaf:name ?knightName ;
+          v:rides ?dragon .
+}
+
+P4:
+
+PREFIX v: <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?monarchName
+WHERE {
+  {
+    ?monarch a v:King .
+  }
+  UNION
+  {
+    ?monarch a v:Queen .
+  }
+  ?monarch foaf:name ?monarchName .
+  
+  FILTER NOT EXISTS {
+    ?monarch v:rides ?someDragon .
+  }
+}
+
+P5:
+
+PREFIX v: <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?personName
+WHERE {
+  {
+    SELECT ?person
+    WHERE {
+      ?person v:spouse ?spouse1 .
+      ?person v:spouse ?spouse2 .
+      FILTER (?spouse1 != ?spouse2)
+    }
+  }
+  ?person foaf:name ?personName .
+}
+
+Parte B:
+
+Intenté insertar esto:
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix v:   <http://example.org/vocab#> .
+
+v:spouse a owl:SymmetricProperty .
+
+
+Pero me dió problemas de memoria así que no pude comparar
+
+
+P6:
+
+PREFIX v:    <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?kingName
+WHERE {
+  VALUES ?houseTargaryen {
+    <http://example.org/got#HouseTargaryen>
+    <http://example.org/hotd#HouseTargaryen>
+    <http://example.org/kot7k#HouseTargaryen>
+  }
+
+  ?king a v:King ;
+        foaf:name ?kingName ;
+        v:spouse ?spouse .
+
+  ?spouse v:memberOf ?house .
+
+  FILTER (?house NOT IN (?houseTargaryen))
+}
+
+P7:
+
+PREFIX v:    <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?personName
+WHERE {
+  VALUES ?targaryenHouse {
+    <http://example.org/got#HouseTargaryen>
+    <http://example.org/hotd#HouseTargaryen>
+    <http://example.org/kot7k#HouseTargaryen>
+  }
+
+  ?person v:memberOf ?targaryenHouse ;
+          foaf:name ?personName .
+
+  FILTER NOT EXISTS {
+    ?person v:rides ?dragon .
+  }
+}
+
+P8:
+
+PREFIX v:    <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT DISTINCT ?castleName
+WHERE {
+  {
+    ?monarch a v:King .
+  }
+  UNION
+  {
+    ?monarch a v:Queen .
+  }
+
+  ?monarch v:ancestralHome ?castle .
+  ?castle foaf:name ?castleName .
+}
+
+P9:
+
+PREFIX v:    <http://example.org/vocab#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?dragonName (COUNT(DISTINCT ?rider) AS ?numRiders)
+WHERE {
+  ?dragon a v:Dragon ;
+          foaf:name ?dragonName .
+
+  OPTIONAL {
+    ?rider v:rides ?dragon .
+  }
+}
+GROUP BY ?dragonName

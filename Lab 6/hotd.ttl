@@ -1,0 +1,145 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hotd: <http://example.org/hotd#> .
+@prefix v: <http://example.org/vocab#> .
+
+hotd:AegonIITargaryen a v:Character,
+        v:King ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    foaf:name "Aegon II Targaryen" .
+
+hotd:AemondTargaryen a v:Character,
+        v:Knight ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    foaf:name "Aemond Targaryen" .
+
+hotd:AlicentHightower a v:Character ;
+    v:ancestralHome hotd:Oldtown ;
+    v:memberOf hotd:HouseHightower ;
+    v:parentOf hotd:AegonIITargaryen, hotd:HelaenaTargaryen, hotd:AemondTargaryen;
+    foaf:name "Alicent Hightower" .
+
+hotd:BaelaTargaryen a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    foaf:name "Baela Targaryen" .
+
+hotd:HarwinStrong a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseStrong ;
+    foaf:name "Harwin Strong" .
+
+hotd:HelaenaTargaryen a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    foaf:name "Helaena Targaryen" .
+
+hotd:JacaerysVelaryon a v:Character ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    foaf:name "Jacaerys Velaryon" .
+
+hotd:JoffreyVelaryon a v:Character ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    foaf:name "Joffrey Velaryon" .
+
+hotd:LaenaVelaryon a v:Character ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    v:spouse hotd:DaemonTargaryen ;
+    v:parentOf hotd:RhaenaTargaryen, hotd:BaelaTargaryen;
+    foaf:name "Laena Velaryon" .
+
+hotd:LaenorVelaryon a v:Character,
+        v:Knight ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    v:spouse hotd:RhaenyraTargaryen ;
+    v:parentOf hotd:JacaerysVelaryon, hotd:LucerysVelaryon ;
+    foaf:name "Laenor Velaryon" .
+
+hotd:LucerysVelaryon a v:Character ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    foaf:name "Lucerys Velaryon" .
+
+hotd:OttoHightower a v:Character ;
+    v:ancestralHome hotd:Oldtown ;
+    v:memberOf hotd:HouseHightower ;
+    v:parentOf hotd:AlicentHightower ;
+    foaf:name "Otto Hightower" .
+
+hotd:RhaenaTargaryen a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    foaf:name "Rhaena Targaryen" .
+
+hotd:RhaenysTargaryen a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    v:spouse hotd:CorlysVelaryon ;
+    v:parentOf hotd:LaenorVelaryon, hotd:LaenaVelaryon;
+    foaf:name "Rhaenys Targaryen" .
+
+hotd:AemmaArryn a v:Character ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseArryn ;
+    v:parentOf hotd:RhaenyraTargaryen ;
+    v:spouse hotd:ViserysITargaryen ;
+    foaf:name "Aemma Arryn" .
+
+hotd:CorlysVelaryon a v:Character ;
+    v:ancestralHome hotd:HighTide ;
+    v:memberOf hotd:HouseVelaryon ;
+    v:parentOf hotd:LaenorVelaryon, hotd:LaenaVelaryon;
+    foaf:name "Corlys Velaryon" .
+
+hotd:DaemonTargaryen a v:Character,
+        v:Knight ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    v:spouse hotd:RhaenyraTargaryen, hotd:LaenaVelaryon ;
+    v:parentOf hotd:RhaenaTargaryen, hotd:BaelaTargaryen;
+    foaf:name "Daemon Targaryen" .
+
+hotd:ViserysITargaryen a v:Character,
+        v:King ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    v:spouse hotd:AemmaArryn, hotd:AlicentHightower ;
+    v:parentOf hotd:RhaenyraTargaryen, hotd:AegonIITargaryen, hotd:HelaenaTargaryen, hotd:AemondTargaryen;
+    foaf:name "Viserys I Targaryen" .
+
+hotd:HouseHightower a v:House ;
+    v:seat hotd:Oldtown ;
+    foaf:name "House Hightower" .
+
+hotd:Oldtown a v:Castle ;
+    v:location "The Reach" ;
+    foaf:name "Oldtown" .
+
+hotd:RhaenyraTargaryen a v:Character,
+        v:Queen ;
+    v:ancestralHome hotd:Dragonstone ;
+    v:memberOf hotd:HouseTargaryen ;
+    v:spouse hotd:LaenorVelaryon, hotd:DaemonTargaryen ;
+    foaf:name "Rhaenyra Targaryen" .
+
+hotd:HouseVelaryon a v:House ;
+    v:seat hotd:HighTide ;
+    foaf:name "House Velaryon" .
+
+hotd:HighTide a v:Castle ;
+    v:location "Driftmark" ;
+    foaf:name "HighTide" .
+
+hotd:HouseTargaryen a v:House ;
+    v:seat hotd:Dragonstone ;
+    foaf:name "House Targaryen" .
+
+hotd:Dragonstone a v:Castle ;
+    v:location "Blackwater Bay" ;
+    foaf:name "Dragonstone" .
+
