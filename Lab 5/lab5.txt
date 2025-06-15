@@ -1,0 +1,68 @@
+1.
+
+MATCH (m:Movie)
+RETURN m.title AS titulo, m.genre AS genero;
+
+2.
+
+MATCH (a:Person)-[r:ACTED_IN]->(m:Movie {title: "Inception"})
+RETURN a.name AS actor, r.role AS personaje;
+
+3.
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+WITH m, COUNT(p) AS num_actores
+WHERE num_actores > 2
+RETURN m.title AS titulo;
+
+4.
+
+MATCH (p:Person)-[a:ACTED_IN]->(m:Movie)<-[d:DIRECTED]-(p)
+RETURN m.title AS titulo, p.name AS director_actor, a.role AS personaje;
+
+
+5.
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(n:Person {name: "Christopher Nolan"})
+WITH DISTINCT p AS actor_nolan
+
+MATCH (q:Person)-[:ACTED_IN]->(mq:Movie)<-[:DIRECTED]-(t:Person {name: "Quentin Tarantino"})
+WITH actor_nolan, COLLECT(DISTINCT q.name) AS actores_tarantino
+WHERE NOT actor_nolan.name IN actores_tarantino
+
+RETURN actor_nolan.name AS actor;
+
+6.
+
+MATCH (p:Person)-[:FRIEND_OF]-(f:Person)
+WHERE (f)-[:ACTED_IN]->(:Movie) OR (f)-[:DIRECTED]->(:Movie)
+WITH p.name AS persona, COUNT(DISTINCT f) AS movie_fr
+RETURN persona, movie_fr;
+
+7.
+
+MATCH (m:Person {name: "Margot Robbie"})-[:FRIEND_OF*1..]-(f:Person)
+WHERE f.name <> "Margot Robbie"
+WITH COLLECT(DISTINCT f.name) AS names
+UNWIND names AS trans_fr
+RETURN DISTINCT trans_fr;
+
+8.
+
+MATCH (p:Person)-[:FRIEND_OF]-(f:Person)
+WITH p.name AS persona, COUNT(DISTINCT f) AS n_fr
+ORDER BY n_fr DESC
+LIMIT 3
+RETURN persona, n_fr;
+
+9.
+
+MATCH (a1:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(a2:Person)
+WHERE a1.name < a2.name  // evita duplicados simétricos (a,b) ≡ (b,a)
+WITH a1.name AS actor1, a2.name AS actor2, COUNT(DISTINCT m) AS same_movies
+WHERE same_movies > 1
+RETURN actor1, actor2, same_movies
+ORDER BY same_movies DESC;
+
+
+
